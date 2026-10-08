@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GameStore — loja gamer de produtos digitais e gift cards.">
+  <title>GameStore | Jogue mais, gaste menos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="GameStore início"><span class="brand-icon">🎮</span> Game<span>Store</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+    <nav id="mainNav">
+      <a href="#inicio">Início</a><a href="#catalogo">Catálogo</a><a href="#como-funciona">Como funciona</a><a href="#pedidos">Meus pedidos</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="cartButton" aria-label="Abrir carrinho">🛒 <span id="cartCount">0</span></button>
+      <button class="icon-button" id="adminButton" aria-label="Abrir painel administrativo">⚙️</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">SUA PRÓXIMA FASE COMEÇA AQUI</p>
+        <h1>JOGUE MAIS.<br><span>GASTE MENOS.</span></h1>
+        <p>Encontre gift cards, créditos digitais e ofertas para sua próxima partida.</p>
+        <a class="button primary" href="#catalogo">Explorar catálogo <span>→</span></a>
+        <div class="trust-row"><span>✓ Produtos verificados</span><span>✓ Atendimento pelo WhatsApp</span></div>
+      </div>
+      <div class="hero-art" aria-label="Ilustração gamer">
+        <div class="glow"></div><div class="hero-controller">🎮</div>
+        <div class="floating-tag tag-one">LEVEL UP <b>+100</b></div>
+        <div class="floating-tag tag-two">OFERTAS <b>ON</b></div>
+      </div>
+    </section>
+
+    <section class="section category-section">
+      <div class="section-heading"><div><p class="eyebrow">ENCONTRE O SEU JOGO</p><h2>Explore categorias</h2></div></div>
+      <div class="category-grid">
+        <button class="category-card active" data-category="Todos"><span>🎮</span><b>Todos</b><small>Ver catálogo completo</small></button>
+        <button class="category-card" data-category="Gift cards"><span>🎁</span><b>Gift cards</b><small>Créditos e cartões digitais</small></button>
+        <button class="category-card" data-category="Créditos"><span>🪙</span><b>Créditos</b><small>Créditos de jogos por meios autorizados</small></button>
+        <button class="category-card" data-category="Acessórios"><span>🕹️</span><b>Acessórios</b><small>Itens para seu setup</small></button>
+      </div>
+    </section>
+
+    <section class="section" id="catalogo">
+      <div class="section-heading catalog-heading">
+        <div><p class="eyebrow">ESCOLHA SUA PRÓXIMA COMPRA</p><h2>Produtos em destaque</h2></div>
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar produto..." aria-label="Buscar produto"></label>
+      </div>
+      <div class="filter-row">
+        <button class="filter active" data-filter="Todos">Todos</button><button class="filter" data-filter="Popular">Mais populares</button><button class="filter" data-filter="Desconto">Com desconto</button>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+      <p id="emptyState" class="empty-state hidden">Nenhum produto encontrado. Tente outra busca.</p>
+    </section>
+
+    <section class="section how-section" id="como-funciona">
+      <div class="section-heading"><div><p class="eyebrow">SIMPLES E TRANSPARENTE</p><h2>Como funciona</h2></div></div>
+      <div class="steps-grid">
+        <article class="step"><span>01</span><div class="step-icon">🛍️</div><h3>Escolha</h3><p>Adicione os produtos ao carrinho e confira os valores.</p></article>
+        <article class="step"><span>02</span><div class="step-icon">💬</div><h3>Converse</h3><p>Envie seu pedido pelo WhatsApp para combinar os próximos passos.</p></article>
+        <article class="step"><span>03</span><div class="step-icon">🧾</div><h3>Acompanhe</h3><p>Consulte seus pedidos e confirme os detalhes com o atendimento.</p></article>
+      </div>
+      <p class="notice">Compre apenas produtos digitais obtidos de forma legítima. Respeite as regras de cada jogo e plataforma; a venda ou transferência de contas e moedas virtuais pode ser proibida. Esta versão é uma demonstração e não processa pagamentos reais.</p>
+    </section>
+
+    <section class="section orders-section" id="pedidos">
+      <div class="section-heading"><div><p class="eyebrow">SEU HISTÓRICO</p><h2>Meus pedidos</h2></div></div>
+      <div id="ordersList" class="orders-list"><p class="muted">Seus pedidos feitos neste navegador aparecerão aqui.</p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#inicio">🎮 Game<span>Store</span></a><p>Loja demonstrativa para projeto de estudo.</p><small>© <span id="year"></span> GameStore. Personalize antes de publicar.</small></footer>
+
+  <div class="overlay hidden" id="overlay"></div>
+  <aside class="drawer hidden" id="cartDrawer" aria-label="Carrinho de compras">
+    <div class="drawer-heading"><div><p class="eyebrow">SUA SELEÇÃO</p><h2>Carrinho</h2></div><button class="close-button" data-close>✕</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-bottom"><div class="total-line"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div>
+      <label class="field-label" for="customerName">Seu nome</label><input id="customerName" class="field" placeholder="Como podemos te chamar?">
+      <label class="field-label" for="customerContact">Seu contato (opcional)</label><input id="customerContact" class="field" placeholder="WhatsApp ou e-mail">
+      <button class="button primary full" id="checkoutButton">Continuar pelo WhatsApp ↗</button>
+      <p class="tiny-note">O pedido será salvo neste navegador. Nenhum pagamento será cobrado por este site.</p>
+    </div>
+  </aside>
+
+  <section class="modal hidden" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <div class="modal-heading"><div><p class="eyebrow">GERENCIAMENTO LOCAL</p><h2 id="adminTitle">Painel administrativo</h2></div><button class="close-button" data-close>✕</button></div>
+    <div class="admin-warning">Demonstração: os dados ficam somente neste navegador. Antes de vender de verdade, crie login seguro, backend e banco de dados.</div>
+    <form id="productForm" class="admin-form">
+      <input type="hidden" id="editId">
+      <div class="form-grid">
+        <label>Nome do produto<input id="productName" required maxlength="70" placeholder="Ex.: Gift card digital"></label>
+        <label>Categoria<select id="productCategory"><option>Gift cards</option><option>Créditos</option><option>Acessórios</option></select></label>
+        <label>Preço (R$)<input id="productPrice" required type="number" min="0.01" step="0.01" placeholder="49.90"></label>
+        <label>Preço anterior (opcional)<input id="productOldPrice" type="number" min="0" step="0.01" placeholder="59.90"></label>
+        <label class="span-two">URL da imagem (opcional)<input id="productImage" type="url" placeholder="https://..."></label>
+        <label class="span-two">Descrição<textarea id="productDescription" rows="2" maxlength="180" placeholder="Descreva o produto e as condições."></textarea></label>
+      </div>
+      <div class="form-actions"><button class="button primary" type="submit" id="saveProductButton">Cadastrar produto</button><button class="button secondary hidden" type="button" id="cancelEditButton">Cancelar edição</button></div>
+    </form>
+    <h3 class="admin-subtitle">Produtos cadastrados</h3><div id="adminProductList" class="admin-product-list"></div>
+    <h3 class="admin-subtitle">Pedidos recebidos neste navegador</h3><div id="adminOrderList" class="admin-product-list"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
